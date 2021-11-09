@@ -2,8 +2,6 @@
 
 Team Members: Lyn Li, Mitchell Massie, Xingguo Huang
 
-App Overview: [description & evaluation]
-
 Unit 8: Group Milestone - README Example
 ===
 
@@ -20,10 +18,10 @@ Unit 8: Group Milestone - README Example
 
 ## Overview
 ### Description
-Tracks what music an individual listens to, and pairs them with others based on that music. Could be potentially used as a dating app, or just meeting new friends with similar music tastes.
+Tracks various daily activities and journaling and organizational tools, and populates a personal feed that is displayed to and reviewable by the user. Allows users to create custom journal entries, reminders, and data tracking entries and categorizes them. Designed for individual use, with potential for social-media style feeds of information users want to make public.
 
 ### App Evaluation
-- **Category:** Social Networking / Music
+- **Category:** Organization / Productivity
 - **Mobile:** This app would be primarily developed for mobile but would perhaps be just as viable on a computer, such as tinder or other similar apps. Functionality wouldn't be limited to mobile devices, however mobile version could potentially have more features.
 - **Story:** Analyzes users music choices, and connects them to other users with similar choices. The user can then decide to message this person and befriend them if wanted.
 - **Market:** Any individual could choose to use this app, and to keep it a safe environment, people would be organized into age groups.
