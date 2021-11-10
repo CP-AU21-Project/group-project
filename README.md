@@ -80,7 +80,7 @@ Tracks various daily activities and journaling and organizational tools, and pop
 * Settings -> Toggle settings
 
 ## Wireframes
-<img src="https://imgur.com/a/jgqYJ2G" width=800><br>
+<img src="https://imgur.com/a/jgqYJ2G.png" width=800><br>
 
 ### [BONUS] Digital Wireframes & Mockups
 <img src="" height=200>
