@@ -105,11 +105,12 @@ Tracks various daily activities and journaling and organizational tools, and pop
    | updatedAt     | DateTime | date when post is last updated (default field) |
 ### Networking
 #### List of network requests by screen
-   - Home Feed Screen
-      - (Read/GET) Query all posts where user is author
-         ```swift
+  - Home Feed Screen 
+    - (Read/GET) Query all posts where user is author
+    ```
+    swift
          let query = PFQuery(className:"Post")
-         query.whereKey("author", equalTo: currentUser)
+         query.whereKey("objectId", equalTo: currentUser)
          query.order(byDescending: "createdAt")
          query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if let error = error { 
@@ -118,17 +119,35 @@ Tracks various daily activities and journaling and organizational tools, and pop
                print("Successfully retrieved \(posts.count) posts.")
            // TODO: Do something with posts...
             }
-         }
-         ```
-      - (Create/POST) Create a new like on a post
-      - (Delete) Delete existing like
-      - (Create/POST) Create a new comment on a post
-      - (Delete) Delete existing comment
-   - Create Post Screen
-      - (Create/POST) Create a new post object
-   - Profile Screen
-      - (Read/GET) Query logged in user object
-      - (Update/PUT) Update user profile image
+         } 
+     ```
+		- (Create/POST) Create a new like on a post
+		- (Update/PUT) Update an entry's title/content/etc.
+		- (Delete) Delete existing entry
+	- Create Entry Screen
+		- (Create/POST) Create a new entry
+	- Create To-do List Screen
+		- (Create/POST) Create a new to-do list
+		- (Create/POST) Create a new to-do list item
+	- View to-do list screen
+		- (Read/GET) query all to-do lists where User is author
+		- (Read/GET) query all to-do list items belonging to each List
+		- (Create/POST) Create a new to-do list item
+		- (Update/PUT) update an existing to-do list with new item
+		- (Update/PUT) update an existing to-do list item
+		- (Delete) Delete existing to-do list
+		- (Delete) Delete existing to-do list item
+	• Create Reminder Screen
+		○ (Create/POST) Create a new reminder
+	• View reminders screen
+		○ (Read/GET) query all reminders where User is author
+	• Statistics Screen
+		○ (Read/GET) query stats for the selected to-do list item or reminder task
+	• Profile Screen 
+		○ (Read/GET) Query logged in user object
+(Update/PUT) Update user profile image![image](https://user-images.githubusercontent.com/25138093/141878213-193a2a8f-4d0e-4f2c-92cc-ad80d97d40de.png)
+
+
 #### [OPTIONAL:] Existing API Endpoints
 ##### An API Of Ice And Fire
 - Base URL - [http://www.anapioficeandfire.com/api](http://www.anapioficeandfire.com/api)
