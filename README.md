@@ -91,18 +91,21 @@ Tracks various daily activities and journaling and organizational tools, and pop
 
 ## Schema 
 ### Models
-#### Post
+#### User
 
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the user post (default field) |
-   | author        | Pointer to User| image author |
-   | image         | File     | image that user posts |
-   | caption       | String   | image caption by author |
-   | commentsCount | Number   | number of comments that has been posted to an image |
-   | likesCount    | Number   | number of likes for the post |
-   | createdAt     | DateTime | date when post is created (default field) |
-   | updatedAt     | DateTime | date when post is last updated (default field) |
+   | emailVerified | Boolean  | whether the user is verified or not |
+   | ACL           | File     | user permissions |
+   | authData      | Number   | authorization data |
+   | username      | Number   | user's name/handle |
+   | createdAt     | DateTime | date when user is created (default field) |
+   | updatedAt     | DateTime | date when user is last updated (default field) |
+   | password 	   | String   | The user's hashed password |
+   | email	   | String   | User's email |
+   | profilePicture | File    | optional profile image |
+   
 
 ### Networking
 #### List of network requests by screen
