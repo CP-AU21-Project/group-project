@@ -83,10 +83,8 @@ Tracks various daily activities and journaling and organizational tools, and pop
 <img src="codepath_group-project_wireframes.png" width=800><br>
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="" height=200>
 
 ### [BONUS] Interactive Prototype
-<img src="" width=200>
 
 
 ## Schema 
