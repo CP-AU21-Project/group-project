@@ -91,8 +91,8 @@ Tracks various daily activities and journaling and organizational tools, and pop
 
 ## Schema 
 ### Models
-#### User
 
+#### User
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the user post (default field) |
@@ -104,8 +104,62 @@ Tracks various daily activities and journaling and organizational tools, and pop
    | updatedAt     | DateTime | date when user is last updated (default field) |
    | password 	   | String   | The user's hashed password |
    | email	   | String   | User's email |
-   | profilePicture | File    | optional profile image |
+   | profilePicture | File    | [optional] profile image |
    
+#### Post
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the post (default field) |
+   | user	   | Pointer<User> | user the post is created by |
+   | category      | String   | post category |
+   | title         | String   | post title |
+   | description   | String   | written description of image, text/journal, or note content |
+   | image         | File     | [optional] image associated with post |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   
+#### List
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the list (default field) |
+   | user	   | Pointer<User> | user the list is created by |
+   | category      | String   | list category |
+   | title         | String   | list title |
+   | description   | String   | written description of the purpose of the list |
+   | createdAt     | DateTime | date when list is created (default field) |
+   | updatedAt     | DateTime | date when list is last updated (default field) |
+   | completed	   | boolean  | whether the list is empty or not
+	
+#### List Item
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the list item (default field) |
+   | user	   | Pointer<User> | user the list item is created by |
+   | list	   | Pointer<List> | list that the list item belongs to |
+   | category      | String   | list item category |
+   | description   | String   | written description of the purpose of the list item |
+   | createdAt     | DateTime | date when list item was created (default field) |
+   | updatedAt     | DateTime | date when list item was last updated (default field) |
+   | completed	   | boolean  | whether the list item was completed successfully |
+   | totalCompleted | integer | total number of times the list item has been completed |
+	
+#### Reminder
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the reminder (default field) |
+   | user	   | Pointer<User> | user the reminder is created by |
+   | category      | String   | reminder category |
+   | title         | String   | reminder title |
+   | description   | String   | written description of the purpose of the reminder |
+   | createdAt     | DateTime | date when reminder is created (default field) |
+   | updatedAt     | DateTime | date when reminder is last updated (default field) |
+   | completed	   | boolean  | whether the reminder is empty or not |
+   | ignored	   | boolean  | whether the reminder was ignoed or not |
+   | remindAt	   | DateTime | when the next reminder should trigger |
+   | listItem      | Pointer<ListItem> | [optional] reference to the list item that this reminder is in relation to |
+   | isActive      | boolean  | whether the reminder is active or not |
+   | frequency     | integer  | how often the reminder should occur |
+   | activeDays    | List<String> | what days the reminder should occur on weekly basis |
 
 ### Networking
 #### List of network requests by screen
