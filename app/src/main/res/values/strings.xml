@@ -17,4 +17,11 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="home">Home</string>
+    <string name="compose">Compose</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
 </resources>
