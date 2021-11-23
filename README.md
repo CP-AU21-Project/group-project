@@ -32,12 +32,12 @@ Tracks various daily activities and journaling and organizational tools, and pop
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
-	- [x] User logs in to access previous journal entries, reminders, and other tracked data entry.
-	- [] User loads in to default news-feed of their own recent journal entries (prompts for new entry if none in storage.)
-	- [] Ability to create new journal entry
-	- [] Ability to create a new categorical to-do list (daily, weekly, morning routine, etc) with complete/incomplete data tracking
-	- [] Profile pages for each user
-	- [] Settings (Accesibility, Notification, General, etc.)
+- [x] User logs in to access previous journal entries, reminders, and other tracked data entry.
+- [ ] User loads in to default news-feed of their own recent journal entries (prompts for new entry if none in storage.)
+- [ ] Ability to create new journal entry
+- [ ] Ability to create a new categorical to-do list (daily, weekly, morning routine, etc) with complete/incomplete data tracking
+- [ ] Profile pages for each user
+- [ ] Settings (Accesibility, Notification, General, etc.)
 
 **Optional Nice-to-have Stories**
 [] Ability to create a new image entry (alternative to writing in-app)
