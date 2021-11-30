@@ -18,6 +18,11 @@
         android:title="@string/profile"
         app:showAsAction="always" />
     <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="settings"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_logout"
         android:icon="@drawable/ic_baseline_logout_24"
         android:title="@string/logout"

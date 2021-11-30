@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 //        final Fragment composeFragment = new ComposeFragment();
 //        final Fragment postsFragment = new PostsFragment();
 //        final Fragment profileFragment = new ProfileFragment();
+        final Fragment settingsFragment = new SettingsFragment();
 
         swipeLayout = findViewById(R.id.swipe_container);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                        Fragment fragment;
+                        Fragment fragment = settingsFragment;
                         switch (menuItem.getItemId()) {
                             case R.id.action_home:
                                 Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
@@ -92,15 +93,21 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
 //                                fragment = composeFragment;
                                 break;
+                            case R.id.settings:
+                                Toast.makeText(MainActivity.this, "Settings!", Toast.LENGTH_SHORT).show();
+                                fragment = settingsFragment;
+                                break;
                             case R.id.action_logout:
                                 goLoginActivity();
                             case R.id.action_profile:
                             default:
                                 Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
+
+                                // TODO: Xingguo add your profile Fragment here
 //                                fragment = profileFragment;
                                 break;
                         }
-                        //fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                        fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                         return true;
                     }
                 });
