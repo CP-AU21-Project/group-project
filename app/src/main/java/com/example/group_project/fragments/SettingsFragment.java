@@ -1,4 +1,4 @@
-package com.example.group_project;
+package com.example.group_project.fragments;
 
 import android.os.Bundle;
 
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.group_project.R;
 
 public class SettingsFragment extends Fragment {
 
