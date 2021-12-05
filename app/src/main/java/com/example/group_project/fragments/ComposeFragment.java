@@ -22,10 +22,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.group_project.R;
+import com.example.group_project.Post;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -33,11 +33,6 @@ import com.parse.SaveCallback;
 
 import java.io.File;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ComposeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ComposeFragment extends Fragment {
 
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 44;
@@ -84,6 +79,13 @@ public class ComposeFragment extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // confirm that a title was written before posting
+                String title = etTitle.getText().toString();
+                if (title.isEmpty()) {
+                    Toast.makeText(getContext(), "Title cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // confirm that a description was written before posting
                 String description = etDescription.getText().toString();
                 if (description.isEmpty()) {
@@ -91,15 +93,9 @@ public class ComposeFragment extends Fragment {
                     return;
                 }
 
-                // confirm that a photo was actually taken and loaded successfully before posting
-                if (photoFile == null || ivPostImage.getDrawable() == null) {
-                    Toast.makeText(getContext(), "No image to post!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
                 // make the post with description and photo, for the current user
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(description, currentUser, photoFile); // actual uploading
+                savePost(title, description, currentUser, photoFile); // actual uploading
             }
         });
 
@@ -169,10 +165,11 @@ public class ComposeFragment extends Fragment {
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
 
-    private void savePost(String description, ParseUser currentUser, File photoFile) {
+    private void savePost(String title, String description, ParseUser currentUser, File photoFile) {
         Post post = new Post();
+        post.setTitle(title);
         post.setDescription(description);
-        post.setImage(new ParseFile(photoFile));
+        if (photoFile != null) post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
 
         // save the new post
@@ -187,9 +184,9 @@ public class ComposeFragment extends Fragment {
 
                 // successful save
                 Log.i(TAG, "Post saved successfully");
+                etTitle.setText("");
                 etDescription.setText(""); // visually indicate to user that post saved by emptying text field
                 ivPostImage.setImageResource(0); // 0 -> empty resource ID
-                pb.setVisibility(ProgressBar.INVISIBLE);
             }
         });
     }

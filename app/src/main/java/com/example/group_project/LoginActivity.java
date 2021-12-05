@@ -30,10 +30,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // check if a user is already signed in or not
-        /*if (ParseUser.getCurrentUser() != null) {
+        if (ParseUser.getCurrentUser() != null) {
             Log.i(TAG, "already logged in as: " + ParseUser.getCurrentUser().getUsername());
             goMainActivity();
-        }*/
+        }
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);

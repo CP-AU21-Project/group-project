@@ -13,6 +13,8 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.group_project.fragments.ComposeFragment;
+import com.example.group_project.fragments.PostsFragment;
 import com.example.group_project.fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
@@ -34,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-//        final Fragment composeFragment = new ComposeFragment();
-//        final Fragment postsFragment = new PostsFragment();
+        final Fragment composeFragment = new ComposeFragment();
+        final Fragment postsFragment = new PostsFragment();
 //        final Fragment profileFragment = new ProfileFragment();
         final Fragment settingsFragment = new SettingsFragment();
 
@@ -63,28 +65,28 @@ public class MainActivity extends AppCompatActivity {
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                        Fragment fragment = settingsFragment;
+                        Fragment fragment;
                         switch (menuItem.getItemId()) {
-                            case R.id.action_home:
-                                Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
-                                //fragment = postsFragment;
-                                break;
                             case R.id.action_compose:
                                 Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
-//                                fragment = composeFragment;
+                                fragment = composeFragment;
                                 break;
-                            case R.id.settings:
+                            case R.id.action_settings:
                                 Toast.makeText(MainActivity.this, "Settings!", Toast.LENGTH_SHORT).show();
                                 fragment = settingsFragment;
                                 break;
                             case R.id.action_logout:
                                 goLoginActivity();
-                            case R.id.action_profile:
+//                            case R.id.action_profile:
+//                                Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
+//
+//                                // TODO: Xingguo add your profile Fragment here
+////                                fragment = profileFragment;
+//                                break;
+                            case R.id.action_home:
                             default:
-                                Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
-
-                                // TODO: Xingguo add your profile Fragment here
-//                                fragment = profileFragment;
+                                Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
+                                fragment = postsFragment;
                                 break;
                         }
                         fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
