@@ -1,5 +1,6 @@
 package com.example.group_project.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +27,7 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodoListsFragment extends Fragment {
+public class TodoListsFragment extends Fragment implements TodoListsAdapter.OnTodoListListener {
     public static final String TAG = "TodoListsFragment";
 
     private RecyclerView rvTodoLists;
@@ -54,7 +55,7 @@ public class TodoListsFragment extends Fragment {
         // 0: create layout for one row in the list
 
         // 1: create the adapter
-        adapter = new TodoListsAdapter(getContext(), allTodoLists);
+        adapter = new TodoListsAdapter(getContext(), allTodoLists, this);
 
         // 2: create the data source (Post)
         // 3: set the adapter on the recycler view
@@ -94,5 +95,19 @@ public class TodoListsFragment extends Fragment {
                 Toast.makeText(getContext(), "Finished loading todo lists!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    /**
+     * Method to set up onClickListener for a given TodoList, so that we can
+     * navigate to that list and view the associated list items.
+     * @param position
+     */
+    @Override
+    public void onTodoListClick(int position) {
+        TodoList todoList = allTodoLists.get(position); // gets the current
+        Log.i(TAG, "clicked on position: " + position + " TodoList: " + todoList.getTitle());
+        // Intent intent = new Intent(this, );
+        // startActivity(intent);
+        // TODO: navigate to target activity/fragment here
     }
 }

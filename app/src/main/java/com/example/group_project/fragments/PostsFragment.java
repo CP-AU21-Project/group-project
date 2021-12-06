@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.group_project.Post;
 import com.example.group_project.PostsAdapter;
 import com.example.group_project.R;
+import com.example.group_project.TodoList;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -25,7 +26,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PostsFragment extends Fragment {
+public class PostsFragment extends Fragment implements PostsAdapter.OnPostListener {
 
     public static final String TAG = "PostsFragment";
     private static final int MIN_POSTS = 20;
@@ -56,7 +57,7 @@ public class PostsFragment extends Fragment {
         // 0: create layout for one row in the list
 
         // 1: create the adapter
-        adapter = new PostsAdapter(getContext(), allPosts);
+        adapter = new PostsAdapter(getContext(), allPosts, this);
 
         // 2: create the data source (Post)
         // 3: set the adapter on the recycler view
@@ -95,5 +96,19 @@ public class PostsFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    /**
+     * Method to set up onClickListener for a given TodoList, so that we can
+     * navigate to that list and view the associated list items.
+     * @param position
+     */
+    @Override
+    public void onPostClick(int position) {
+        Post post = allPosts.get(position); // gets the current
+        Log.i(TAG, "clicked on position: " + position + " Post: " + post.getTitle());
+        // Intent intent = new Intent(this, );
+        // startActivity(intent);
+        // TODO: navigate to target activity/fragment here
     }
 }

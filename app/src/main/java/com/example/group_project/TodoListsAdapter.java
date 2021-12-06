@@ -19,17 +19,19 @@ public class TodoListsAdapter extends RecyclerView.Adapter<TodoListsAdapter.View
 
     private Context context;
     private List<TodoList> todoLists;
+    private OnTodoListListener mOnTodoListListener;
 
-    public TodoListsAdapter(Context context, List<TodoList> todoLists) {
+    public TodoListsAdapter(Context context, List<TodoList> todoLists, OnTodoListListener onTodoListListener) {
         this.context = context;
         this.todoLists = todoLists;
+        this.mOnTodoListListener = onTodoListListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_todo_list, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, this.mOnTodoListListener);
     }
 
     @Override
@@ -44,19 +46,23 @@ public class TodoListsAdapter extends RecyclerView.Adapter<TodoListsAdapter.View
     }
 
     // so we can parameterize our class
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView tvTitle;
         private TextView tvCategory;
         private TextView tvDescription;
         private TextView tvTimestamp;
+        OnTodoListListener onTodoListListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnTodoListListener onTodoListListener) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvCategory = itemView.findViewById(R.id.tvCategory);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            this.onTodoListListener = onTodoListListener;
+
+            itemView.setOnClickListener(this);
         }
 
         public void bind(TodoList todoList) {
@@ -65,8 +71,16 @@ public class TodoListsAdapter extends RecyclerView.Adapter<TodoListsAdapter.View
             tvCategory.setText(todoList.getCategory());
             tvDescription.setText(todoList.getDescription());
             tvTimestamp.setText(todoList.getCreatedAt().toString());
-
-
         }
+
+        @Override
+        public void onClick(View view) {
+            onTodoListListener.onTodoListClick(getAdapterPosition());
+        }
+
+    }
+
+    public interface OnTodoListListener {
+        void onTodoListClick(int position);
     }
 }

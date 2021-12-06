@@ -19,17 +19,19 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     private Context context;
     private List<Post> posts;
+    private OnPostListener mOnPostListener;
 
-    public PostsAdapter(Context context, List<Post> posts) {
+    public PostsAdapter(Context context, List<Post> posts, OnPostListener onPostListener) {
         this.context = context;
         this.posts = posts;
+        this.mOnPostListener = onPostListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, this.mOnPostListener);
     }
 
     @Override
@@ -56,21 +58,25 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     }
 
     // so we can parameterize our class
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView tvTitle;
         private TextView tvCategory;
         private TextView tvDescription;
         private TextView tvTimestamp;
         private ImageView ivImage;
+        OnPostListener onPostListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnPostListener onPostListener) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvCategory = itemView.findViewById(R.id.tvCategory);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
             ivImage = itemView.findViewById(R.id.ivImage);
+            this.onPostListener = onPostListener;
+
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Post post) {
@@ -87,5 +93,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             }
 
         }
+
+        @Override
+        public void onClick(View view) {
+            onPostListener.onPostClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnPostListener {
+        void onPostClick(int position);
     }
 }
