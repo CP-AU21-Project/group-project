@@ -17,6 +17,8 @@ public class ParseApplication extends Application {
 
         // register Parse models
         ParseObject.registerSubclass(Post.class);
+        ParseObject.registerSubclass(TodoList.class);
+
 
         // initialize Parse model
         Parse.initialize(new Parse.Configuration.Builder(this)

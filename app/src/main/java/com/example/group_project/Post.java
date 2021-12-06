@@ -8,17 +8,26 @@ import com.parse.ParseUser;
 @ParseClassName("Post")
 public class Post extends ParseObject {
     public static final String KEY_TITLE = "title";
+    public static final String KEY_CATEGORY = "category";
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_KEY = "createdAt";
 
+    public String getCategory() {
+        return getString(KEY_CATEGORY);
+    }
+
+    public void setCategory(String category) {
+        put(KEY_CATEGORY, category);
+    }
+
     public String getTitle() {
         return getString(KEY_TITLE);
     }
 
-    public void setTitle(String description) {
-        put(KEY_TITLE, description);
+    public void setTitle(String title) {
+        put(KEY_TITLE, title);
     }
 
     public String getDescription() {

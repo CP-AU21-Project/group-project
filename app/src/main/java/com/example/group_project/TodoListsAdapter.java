@@ -15,44 +15,32 @@ import com.parse.ParseFile;
 
 import java.util.List;
 
-public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
+public class TodoListsAdapter extends RecyclerView.Adapter<TodoListsAdapter.ViewHolder> {
 
     private Context context;
-    private List<Post> posts;
+    private List<TodoList> todoLists;
 
-    public PostsAdapter(Context context, List<Post> posts) {
+    public TodoListsAdapter(Context context, List<TodoList> todoLists) {
         this.context = context;
-        this.posts = posts;
+        this.todoLists = todoLists;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_todo_list, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Post post = posts.get(position);
-        holder.bind(post);
+    public void onBindViewHolder(@NonNull TodoListsAdapter.ViewHolder holder, int position) {
+        TodoList todoList = todoLists.get(position);
+        holder.bind(todoList);
     }
 
     @Override
     public int getItemCount() {
-        return posts.size();
-    }
-
-    // Clean all elements of the recycler
-    public void clear() {
-        posts.clear();
-        notifyDataSetChanged();
-    }
-
-    // Add a list of items -- change to type used
-    public void addAll(List<Post> posts) {
-        this.posts.addAll(posts);
-        notifyDataSetChanged();
+        return todoLists.size();
     }
 
     // so we can parameterize our class
@@ -62,7 +50,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvCategory;
         private TextView tvDescription;
         private TextView tvTimestamp;
-        private ImageView ivImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,21 +57,15 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvCategory = itemView.findViewById(R.id.tvCategory);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
-            ivImage = itemView.findViewById(R.id.ivImage);
         }
 
-        public void bind(Post post) {
+        public void bind(TodoList todoList) {
             // bind the post data to the view elements
-            tvTitle.setText(post.getTitle());
-            tvCategory.setText(post.getCategory());
-            tvDescription.setText(post.getDescription());
-            tvTimestamp.setText(post.getCreatedAt().toString());
+            tvTitle.setText(todoList.getTitle());
+            tvCategory.setText(todoList.getCategory());
+            tvDescription.setText(todoList.getDescription());
+            tvTimestamp.setText(todoList.getCreatedAt().toString());
 
-            ParseFile image = post.getImage();
-            if (image != null) // some dummy images "aren't there", so can't get URL
-            {
-                Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
-            }
 
         }
     }

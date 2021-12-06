@@ -8,6 +8,11 @@
         android:title="@string/home"
         app:showAsAction="always" />
     <item
+        android:id="@+id/action_todo_lists"
+        android:icon="@drawable/ic_baseline_checklist_24"
+        android:title="@string/TodoLists"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_compose"
         android:icon="@android:drawable/ic_menu_edit"
         android:title="@string/compose"
@@ -17,11 +22,11 @@
         android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/profile"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/ic_baseline_settings_24"
-        android:title="settings"
-        app:showAsAction="always" />
+<!--    <item-->
+<!--        android:id="@+id/action_settings"-->
+<!--        android:icon="@drawable/ic_baseline_settings_24"-->
+<!--        android:title="settings"-->
+<!--        app:showAsAction="always" />-->
     <item
         android:id="@+id/action_logout"
         android:icon="@drawable/ic_baseline_logout_24"

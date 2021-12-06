@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.group_project.fragments.ComposeFragment;
+import com.example.group_project.fragments.ProfileFragment;
+import com.example.group_project.fragments.TodoListsFragment;
 import com.example.group_project.fragments.PostsFragment;
 import com.example.group_project.fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -38,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         final Fragment composeFragment = new ComposeFragment();
         final Fragment postsFragment = new PostsFragment();
-//        final Fragment profileFragment = new ProfileFragment();
-        final Fragment settingsFragment = new SettingsFragment();
+        final Fragment profileFragment = new ProfileFragment();
+        final Fragment todoListsFragment = new TodoListsFragment();
+//        final Fragment settingsFragment = new SettingsFragment();
+
 
         swipeLayout = findViewById(R.id.swipe_container);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         swipeLayout.setRefreshing(false);
                     }
-                }, 4000); // delay in millis
+                }, 3000); // delay in millis
             }
         });
 
@@ -71,18 +75,20 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
                                 fragment = composeFragment;
                                 break;
-                            case R.id.action_settings:
-                                Toast.makeText(MainActivity.this, "Settings!", Toast.LENGTH_SHORT).show();
-                                fragment = settingsFragment;
+                            case R.id.action_todo_lists:
+                                Toast.makeText(MainActivity.this, "Lists!", Toast.LENGTH_SHORT).show();
+                                fragment = todoListsFragment;
                                 break;
-                            case R.id.action_logout:
-                                goLoginActivity();
-//                            case R.id.action_profile:
-//                                Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
-//
-//                                // TODO: Xingguo add your profile Fragment here
-////                                fragment = profileFragment;
+//                            case R.id.action_settings:
+//                                Toast.makeText(MainActivity.this, "Settings!", Toast.LENGTH_SHORT).show();
+//                                fragment = settingsFragment;
 //                                break;
+                            case R.id.action_logout: // TODO: PUT LOGOUT BUTTON && FUNCTIONALITY ON PROFILE FRAGMENT
+                                goLoginActivity();
+                            case R.id.action_profile:
+                                Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
+                                fragment = profileFragment;
+                                break;
                             case R.id.action_home:
                             default:
                                 Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();

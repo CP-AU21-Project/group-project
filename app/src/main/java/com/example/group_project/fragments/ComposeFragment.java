@@ -40,12 +40,12 @@ public class ComposeFragment extends Fragment {
     public static final String photoFileName = "photo.jpg";
     private File photoFile;
 
-    private EditText etTitle;
-    private EditText etDescription;
     private Button btnCaptureImage;
-    private ImageView ivPostImage;
     private Button btnSubmit;
-    private Button btnLogout;
+    private EditText etCategory;
+    private EditText etDescription;
+    private EditText etTitle;
+    private ImageView ivPostImage;
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -63,11 +63,11 @@ public class ComposeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         etTitle = view.findViewById(R.id.etTitle);
+        etCategory = view.findViewById(R.id.etCategory);
         etDescription = view.findViewById(R.id.etDescription);
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
-        btnLogout = view.findViewById(R.id.btnLogout);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +86,11 @@ public class ComposeFragment extends Fragment {
                     return;
                 }
 
+                String category = etCategory.getText().toString();
+                if (category.isEmpty()) {
+                    category = "none";
+                }
+
                 // confirm that a description was written before posting
                 String description = etDescription.getText().toString();
                 if (description.isEmpty()) {
@@ -95,17 +100,7 @@ public class ComposeFragment extends Fragment {
 
                 // make the post with description and photo, for the current user
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(title, description, currentUser, photoFile); // actual uploading
-            }
-        });
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ParseUser.logOut();
-                ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
-                // TODO: find proper location for the logout functionality and button
-                //  goLoginActivity(); // return to login activity
+                savePost(title, category, description, currentUser, photoFile); // actual uploading
             }
         });
     }
@@ -165,9 +160,10 @@ public class ComposeFragment extends Fragment {
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
 
-    private void savePost(String title, String description, ParseUser currentUser, File photoFile) {
+    private void savePost(String title, String category, String description, ParseUser currentUser, File photoFile) {
         Post post = new Post();
         post.setTitle(title);
+        post.setCategory(category);
         post.setDescription(description);
         if (photoFile != null) post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
@@ -185,6 +181,7 @@ public class ComposeFragment extends Fragment {
                 // successful save
                 Log.i(TAG, "Post saved successfully");
                 etTitle.setText("");
+                etCategory.setText("");
                 etDescription.setText(""); // visually indicate to user that post saved by emptying text field
                 ivPostImage.setImageResource(0); // 0 -> empty resource ID
             }
