@@ -6,6 +6,13 @@
         <entry key="..\:/Android/group-project/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.196875" />
         <entry key="..\:/Android/group-project/app/src/main/res/layout/activity_login.xml" value="0.3151041666666667" />
         <entry key="..\:/Android/group-project/app/src/main/res/layout/activity_main.xml" value="0.1765625" />
+        <entry key="..\:/Android/group-project/app/src/main/res/layout/fragment_compose.xml" value="0.3151041666666667" />
+        <entry key="..\:/Android/group-project/app/src/main/res/layout/fragment_compose_todo_list.xml" value="0.33" />
+        <entry key="..\:/Android/group-project/app/src/main/res/layout/fragment_posts.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android/group-project/app/src/main/res/layout/fragment_profile.xml" value="0.21666666666666667" />
+        <entry key="..\:/Android/group-project/app/src/main/res/layout/fragment_todo_lists.xml" value="0.18611111111111112" />
+        <entry key="..\:/Android/group-project/app/src/main/res/layout/item_post.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android/group-project/app/src/main/res/layout/item_todo_list.xml" value="0.21666666666666667" />
         <entry key="..\:/Android/group-project/app/src/main/res/layout/settings_activity.xml" value="0.3333333333333333" />
         <entry key="..\:/Android/group-project/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.3333333333333333" />
         <entry key="..\:/Android/group-project/app/src/main/res/xml/fileprovider.xml" value="0.3333333333333333" />
