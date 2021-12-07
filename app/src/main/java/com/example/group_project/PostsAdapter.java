@@ -86,6 +86,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvDescription.setText(post.getDescription());
             tvTimestamp.setText(post.getCreatedAt().toString());
 
+            ivImage.setImageDrawable(null); // so that if there's laggy image from other post it's cleared
             ParseFile image = post.getImage();
             if (image != null) // some dummy images "aren't there", so can't get URL
             {

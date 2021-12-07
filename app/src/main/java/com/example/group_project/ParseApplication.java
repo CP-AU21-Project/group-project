@@ -18,6 +18,7 @@ public class ParseApplication extends Application {
         // register Parse models
         ParseObject.registerSubclass(Post.class);
         ParseObject.registerSubclass(TodoList.class);
+        ParseObject.registerSubclass(TodoListItem.class);
 
 
         // initialize Parse model

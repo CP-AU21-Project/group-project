@@ -3,19 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/action_entries"
         android:icon="@android:drawable/ic_menu_compass"
-        android:title="@string/home"
+        android:title="Entries"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_todo_lists"
         android:icon="@drawable/ic_baseline_checklist_24"
-        android:title="@string/TodoLists"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/action_compose"
-        android:icon="@android:drawable/ic_menu_edit"
-        android:title="@string/compose"
+        android:title="Lists"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_profile"

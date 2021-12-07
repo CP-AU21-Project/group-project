@@ -39,8 +39,8 @@ public class TodoList extends ParseObject {
         return getString(KEY_TITLE);
     }
 
-    public void setTitle(String description) {
-        put(KEY_TITLE, description);
+    public void setTitle(String title) {
+        put(KEY_TITLE, title);
     }
 
     public String getDescription() {

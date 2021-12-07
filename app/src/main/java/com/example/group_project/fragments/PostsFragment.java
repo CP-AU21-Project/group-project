@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +20,7 @@ import com.example.group_project.TodoList;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ public class PostsFragment extends Fragment implements PostsAdapter.OnPostListen
     public static final String TAG = "PostsFragment";
     private static final int MIN_POSTS = 20;
 
+    private Button btnComposePost;
     private RecyclerView rvPosts;
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
@@ -50,8 +53,26 @@ public class PostsFragment extends Fragment implements PostsAdapter.OnPostListen
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        btnComposePost = view.findViewById(R.id.btnComposePost);
         rvPosts = view.findViewById(R.id.rvPosts);
         allPosts = new ArrayList<>();
+
+        // set onClickListener to create a new Post
+        btnComposePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick: btnComposePost");
+                // TODO: navigate to ComposePostFragment
+                ComposePostFragment composePostFragment = new ComposePostFragment();
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.flContainer, composePostFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
 
         // steps to use the recycler view:
         // 0: create layout for one row in the list
@@ -74,6 +95,7 @@ public class PostsFragment extends Fragment implements PostsAdapter.OnPostListen
         // Specify which class to query
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
+        query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
         //query.setLimit(MIN_POSTS);
         query.addDescendingOrder(Post.KEY_CREATED_KEY);
 
@@ -88,7 +110,7 @@ public class PostsFragment extends Fragment implements PostsAdapter.OnPostListen
 
                 // acquire all posts for a given user to later display
                 for (Post post : posts) {
-                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
+                    Log.i(TAG, "Post: " + post.getDescription() + ", photo: " + post.getImage());
                 }
 
                 // display users posts
@@ -109,6 +131,7 @@ public class PostsFragment extends Fragment implements PostsAdapter.OnPostListen
         Log.i(TAG, "clicked on position: " + position + " Post: " + post.getTitle());
         // Intent intent = new Intent(this, );
         // startActivity(intent);
-        // TODO: navigate to target activity/fragment here
+        // TODO: navigate to EditPostFragment or ComposePostFragment (modified to accept
+        //       arguments for initial EditText field values
     }
 }

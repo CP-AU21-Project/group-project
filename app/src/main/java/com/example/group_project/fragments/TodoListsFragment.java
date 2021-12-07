@@ -6,11 +6,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +25,7 @@ import com.example.group_project.TodoListsAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,7 @@ import java.util.List;
 public class TodoListsFragment extends Fragment implements TodoListsAdapter.OnTodoListListener {
     public static final String TAG = "TodoListsFragment";
 
+    private Button btnComposeTodoList;
     private RecyclerView rvTodoLists;
     protected TodoListsAdapter adapter;
     protected List<TodoList> allTodoLists;
@@ -48,9 +52,26 @@ public class TodoListsFragment extends Fragment implements TodoListsAdapter.OnTo
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        btnComposeTodoList = view.findViewById(R.id.btnComposeTodoList);
         rvTodoLists = view.findViewById(R.id.rvTodoLists);
         allTodoLists = new ArrayList<>();
 
+        // set onClickListener to create a new TodoList
+        btnComposeTodoList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // navigate to ComposeTodoListFragment
+                Log.i(TAG, "onClick: btnComposeTodoList");
+                ComposeTodoListFragment composeTodoListFragment = new ComposeTodoListFragment();
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.flContainer, composeTodoListFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+        
         // steps to use the recycler view:
         // 0: create layout for one row in the list
 
@@ -72,6 +93,7 @@ public class TodoListsFragment extends Fragment implements TodoListsAdapter.OnTo
         // Specify which class to query
         ParseQuery<TodoList> query = ParseQuery.getQuery(TodoList.class);
         query.include(TodoList.KEY_USER);
+        query.whereEqualTo(TodoList.KEY_USER, ParseUser.getCurrentUser());
         //query.setLimit(MIN_POSTS);
         query.addDescendingOrder(TodoList.KEY_CREATED_KEY);
 
@@ -92,7 +114,7 @@ public class TodoListsFragment extends Fragment implements TodoListsAdapter.OnTo
                 // display users posts
                 allTodoLists.addAll(todoLists);
                 adapter.notifyDataSetChanged();
-                Toast.makeText(getContext(), "Finished loading todo lists!", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getContext(), "Finished loading todo lists!", Toast.LENGTH_SHORT).show();
             }
         });
     }
