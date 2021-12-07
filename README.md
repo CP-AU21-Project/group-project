@@ -37,7 +37,7 @@ Tracks various daily activities and journaling and organizational tools, and pop
 - [ ] Ability to create new journal entry
 - [ ] Ability to create a new categorical to-do list (daily, weekly, morning routine, etc) with complete/incomplete data tracking
 - [ ] Profile pages for each user
-- [ ] Settings (Accesibility, Notification, General, etc.)
+- [x] Settings (Accesibility, Notification, General, etc.)
 
 **Optional Nice-to-have Stories**
 - [ ] Ability to create a new image entry (alternative to writing in-app)
