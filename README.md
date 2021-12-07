@@ -20,6 +20,8 @@ Unit 8: Group Milestone - README Example
 ### Description
 Tracks various daily activities and journaling and organizational tools, and populates a personal feed that is displayed to and reviewable by the user. Allows users to create custom journal entries, reminders, and data tracking entries and categorizes them. Designed for individual use, with potential for social-media style feeds of information users want to make public.
 
+
+
 ### App Evaluation
 - **Category:** Organization / Productivity
 - **Mobile:** This app would be primarily developed for mobile but would perhaps be just as viable on a computer. Functionality wouldn't be limited to mobile devices, however mobile version could potentially have more features.
@@ -33,16 +35,23 @@ Tracks various daily activities and journaling and organizational tools, and pop
 
 **Required Must-have Stories**
 - [x] User logs in to access previous journal entries, reminders, and other tracked data entry.
-- [ ] User loads in to default news-feed of their own recent journal entries (prompts for new entry if none in storage.)
-- [ ] Ability to create new journal entry
-- [ ] Ability to create a new categorical to-do list (daily, weekly, morning routine, etc) with complete/incomplete data tracking
-- [ ] Profile pages for each user
+- [x] User loads in to default news-feed of their own recent journal entries (prompts for new entry if none in storage.)
+- [x] Ability to create new journal entry
+- [x] Ability to create a new categorical to-do list (daily, weekly, morning routine, etc) with complete/incomplete data tracking
+- [x] Profile pages for each user
 - [x] Settings (Accesibility, Notification, General, etc.)
 
 **Optional Nice-to-have Stories**
-- [ ] Ability to create a new image entry (alternative to writing in-app)
+- [x] Ability to create a new image entry (alternative to writing in-app)
 - [ ] Ability to generate successful completion statistics for different to-do lists activities (e.g. flossed in AM, went for morning walk, etc.)
 - [ ] Ability to create prioritized reminders (if high enough priority, to-do list items will be prompted for through Android notification system)
+
+## Video Walkthrough
+Here's a walkthrough of implemented user stories:
+
+<img src='walkthrough_pt3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ### 2. Screen Archetypes
 
