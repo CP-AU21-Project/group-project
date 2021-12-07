@@ -34,9 +34,9 @@ public class PostsFragment extends Fragment implements PostsAdapter.OnPostListen
     private static final int MIN_POSTS = 20;
 
     private Button btnComposePost;
-    private RecyclerView rvPosts;
-    protected PostsAdapter adapter;
     protected List<Post> allPosts;
+    protected PostsAdapter adapter;
+    private RecyclerView rvPosts;
 
     public PostsFragment() {
         // Required empty public constructor

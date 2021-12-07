@@ -150,7 +150,7 @@ public class ComposeTodoListFragment extends Fragment implements AdapterView.OnI
             }
         });
 
-        /* TODO: convert items to TodoListItem and save all to Parse server -- */
+        /* convert items to TodoListItem and save all to Parse server -- */
         for (String task : allTodoListItems) {
             saveTodoListItems(task, currentUser, todoList);
         }
