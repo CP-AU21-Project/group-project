@@ -185,6 +185,6 @@ public class ComposeTodoListFragment extends Fragment implements AdapterView.OnI
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         String task = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(getContext(), "Clicked on: " + task, Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onItemClick: " + task);
     }
 }

@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.group_project.LoginActivity;
 import com.example.group_project.R;
+import com.example.group_project.User;
 import com.parse.ParseUser;
 
 public class ProfileFragment extends Fragment {
