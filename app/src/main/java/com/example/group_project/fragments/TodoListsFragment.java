@@ -114,7 +114,7 @@ public class TodoListsFragment extends Fragment implements TodoListsAdapter.OnTo
                 // display users posts
                 allTodoLists.addAll(todoLists);
                 adapter.notifyDataSetChanged();
-                // Toast.makeText(getContext(), "Finished loading todo lists!", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getContext(), "Finished loading lists!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -131,5 +131,12 @@ public class TodoListsFragment extends Fragment implements TodoListsAdapter.OnTo
         // Intent intent = new Intent(this, );
         // startActivity(intent);
         // TODO: navigate to target activity/fragment here
+        ViewTodoListFragment viewTodoListFragment = new ViewTodoListFragment(todoList);
+        getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flContainer, viewTodoListFragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

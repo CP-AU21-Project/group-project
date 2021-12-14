@@ -150,7 +150,7 @@ public class ComposeTodoListFragment extends Fragment implements AdapterView.OnI
             }
         });
 
-        /* TODO: convert items to TodoListItem and save all to Parse server -- */
+        /* convert items to TodoListItem and save all to Parse server -- */
         for (String task : allTodoListItems) {
             saveTodoListItems(task, currentUser, todoList);
         }
@@ -185,6 +185,6 @@ public class ComposeTodoListFragment extends Fragment implements AdapterView.OnI
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         String task = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(getContext(), "Clicked on: " + task, Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onItemClick: " + task);
     }
 }

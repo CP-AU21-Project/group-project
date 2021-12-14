@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_entries"
-        android:icon="@android:drawable/ic_menu_compass"
+        android:icon="@drawable/ic_baseline_add_comment_24"
         android:title="Entries"
         app:showAsAction="always" />
     <item

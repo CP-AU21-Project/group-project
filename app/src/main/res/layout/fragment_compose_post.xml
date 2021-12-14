@@ -8,6 +8,12 @@
     tools:context=".fragments.ComposePostFragment">
 
 
+    <Button
+        android:id="@+id/btnPostSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+
     <EditText
         android:id="@+id/etPostTitle"
         android:layout_width="match_parent"
@@ -40,11 +46,5 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <Button
-        android:id="@+id/btnPostSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit" />
 
 </LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ViewTodoListFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvViewTodoListTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            tools:text="title" />
+
+        <TextView
+            android:id="@+id/tvViewTodoListCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="category" />
+
+        <TextView
+            android:id="@+id/tvViewTodoListDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="description" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvViewTodoListItems"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:padding="8dp" />
+
+
+</FrameLayout>
