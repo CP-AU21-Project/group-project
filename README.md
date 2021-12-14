@@ -49,7 +49,7 @@ Tracks various daily activities and journaling and organizational tools, and pop
 ## Video Walkthrough
 Here's a walkthrough of implemented user stories:
 
-<img src='walkthrough_pt3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='walkthrough_final.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
